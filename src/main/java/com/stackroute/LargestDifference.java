@@ -22,7 +22,7 @@ public class LargestDifference {
     	System.out.println(index);
 
 	}
-
+//3 6 5 8
 	public static int findLargestDifference(int[] numbers) {
 		int index = -1;
 		int mDiff = 0;
@@ -33,17 +33,26 @@ public class LargestDifference {
 				int j = i+1;
 				if(j < s) {
 					d = numbers[j] - numbers[i];
-					if(d  > 0 && d > mDiff) {
+					if(d  > 0 && d >mDiff) {						
+						
 						index = j;
 						mDiff = d;
-					}else {
+					} else if(d>0 && d==mDiff && numbers[index]<numbers[j]) {
+						index = j;
+						mDiff = d;
+					}
+					else {
 						
 						d = numbers[i] - numbers[j];
-						if(d>mDiff) {
+						
+						if(d>mDiff) {														
 							mDiff = d;
 							index = i;
-						}
 						
+						}else if(d>0 && d==mDiff && numbers[index]<numbers[i]) {
+							index = i;
+							mDiff = d;
+						}
 					}
 				}
 			}
